@@ -1,0 +1,22 @@
+server:
+  port: 8080
+
+spring:
+  rabbitmq:
+    host: 8.130.137.166
+    virtual-host: /dev
+    port: 5672
+    password: Xl.010404
+    username: admin
+    #开启消息二次确认,生产者到broker的交换机
+    publisher-confirm-type: correlated
+    #开启消息二次确认，交换机到队列的可靠性投递
+    publisher-returns: true
+    #为true，则交换机处理消息到路由失败，则会返回给生产者
+    template:
+      mandatory: true
+
+    #消息手工确认ack
+    listener:
+      simple:
+        acknowledge-mode: manual
